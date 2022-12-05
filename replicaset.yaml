@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset
+  labels:
+    app: myapp
+    tier: replicaset
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      tier: replicaset
+  template:
+    metadata:
+      labels:
+        tier: replicaset
+    spec:
+      containers:
+      - name: myapp
+        image: registry.cluster.wik.cloud/public/echo
